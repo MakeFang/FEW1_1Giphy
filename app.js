@@ -11,14 +11,16 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
 app.set('view engine', 'handlebars');
 
-/*app.get('/', function (req, res) {
-  giphy.search(req.query.term, function (err, response) {
+app.get('/', function (req, res) {
+  let defaultTerm = req.query.term || "trending";
+  giphy.search(defaultTerm, function (err, response) {
     res.render('home', {gifs: response.data})
   });
 });
-*/
 
-app.get('/', function (req, res) {
+
+/*
+  app.get('/', function (req, res) {
   console.log(req.query.term)
   var queryString = req.query.term;
   // ENCODE THE QUERY STRING TO REMOVE WHITE SPACES AND RESTRICTED CHARACTERS
@@ -45,6 +47,7 @@ app.get('/', function (req, res) {
     });
   });
 });
+*/
 
 
 app.get('/hello-world', function (req, res) {
